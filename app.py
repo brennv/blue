@@ -5,7 +5,7 @@ from blue.schedule import scheduler, async_wrapper
 import os
 
 
-config_file = 'config-rh-azure.yml'
+config_file = 'config.yml'
 path = os.path.dirname(__file__)
 app = Blue(config=jsonify(os.path.join(path, config_file)))
 bot = app.config['client']
