@@ -4,7 +4,6 @@ from .google import search_site
 from .browser import browser
 from .giphy import giphy
 from .text import mood
-# from .rhforce import watchlist
 import bottom
 
 
@@ -14,8 +13,6 @@ def run_lambda(this, send, subs):
         return ['hello ' + random_emoji(subset='faces')]
     if send['lambda'] == 'say_thanks':
         return ['thanks ' + random_emoji(subset='misc')]
-    if send['lambda'] == 'get_watchlist':
-        return watchlist(this)
     if send['lambda'] == 'google_site':
         return search_site(this, subs)
     if send['lambda'] == 'giphy':
@@ -81,8 +78,6 @@ def respond(this, message, target, note_count=0):
                     note_count += 1
                     send_notes(this, target=target, notes=[send])
                 else:
-                    if 'watchlist' in send['lambda']:  # for debugging
-                        send_notes(this, target=this['bot']['dev_channel'], notes=['running watchlist'])  #
                     lambda_notes = run_lambda(this, send, subs)
                     if lambda_notes and type(lambda_notes) == list:
                         note_count += len(lambda_notes)
