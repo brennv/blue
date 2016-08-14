@@ -1,0 +1,39 @@
+app:
+  mode: DEBUG
+
+bot:
+  host: irc.​freenode.​net
+  port: 6697
+  ssl: True
+  nick: blue
+  realname: https://github.com/{profile}/blue
+  channel: '#blue-dev'
+
+google:
+  site_url: http://stackoverflow.com/
+
+giphy:
+  api_key: dc6zaTOxFJmzC  # public beta https://github.com/Giphy/GiphyAPI
+
+lexicon:
+  - call: '#hello'
+    help: Say hello.
+    send:
+      - who me?
+      - lambda: say_hello
+  - call: '#stackoverflow'
+    help: '[terms] ~ Google search terms against site content.'
+    send:
+      - lambda: google_site
+  - call: 'blue++'
+    help: '~ Says thanks.'
+    send:
+      - lambda: say_thanks
+  - call: '#giphy'
+    help: '[terms] ~ Get giphy for given terms.'
+    send:
+      - lambda: giphy
+  - call: '#mood'
+    help: '[phrase] ~ Perform sentiment analysis on a given phrase.'
+    send:
+      - lambda: mood
